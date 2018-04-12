@@ -1,10 +1,10 @@
 # jQuery
 
 ## Quadrant
-ubiquitous
+grow
 
 ## Type
-Tools
+concepts
 
 ## Description
 Mollit laboris minim ad ipsum velit occaecat. Pariatur officia consequat non minim non officia aliqua nostrud sint. Sunt elit cillum velit eiusmod voluptate deserunt nisi irure qui.
@@ -27,4 +27,4 @@ console.log(foo(5));
 https://www.google.co.in
 
 ### Platform
-web, mobile, ar/vr
+web, mobile, ar/vr, awesome
