@@ -322,7 +322,9 @@ function radar_visualization(config) {
   function populateSideNav(d) {
     let x = $('zero-md');
     $('#slider').slideReveal('show');
-    let frameworkName = `docs/${d.filename}`;
+    let frameworkName = `templates/${d.label
+      .replace(/ /g, '_')
+      .toLowerCase()}.md`;
 
     console.log(frameworkName);
     x.prop('file', frameworkName);

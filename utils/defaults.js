@@ -20,13 +20,9 @@ const defaultKeys = [{
     tags: true
 }];
 
-const whitelistedKeys = ['filename', 'label', 'quadrant', 'ring', 'platform'];
-const quandrants = ['incubate', 'de-emphasise', 'ubiquitous', 'scale/grow'];
-const rings = ['concepts', 'tools', 'frameworks'];
+const whitelistedKeys = ['filename', 'label', 'quadrant', 'type', 'platform'];
 
 module.exports = {
     defaultKeys,
-    whitelistedKeys,
-    quandrants,
-    rings
+    whitelistedKeys
 };

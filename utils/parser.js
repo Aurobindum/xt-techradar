@@ -49,9 +49,6 @@ class RadarMarkdownParser {
         });
         return keyObj;
     }
-    escapeRegExp(s) {
-        return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
-    }
     levelOneSanitizer(token) {
         if (token.type === 'heading_open') {
             this.isHeading = '';
@@ -110,23 +107,6 @@ class RadarMarkdownParser {
             this.tempData[keyObj.name] = sanitize(md.renderer.render(this.sanitizedData[keyObj.name], mdOptions));
         }
     }
-    levelFourSanitizer(value, key) {
-        if(key ===  'quadrant') {
-            _.each(defaults.quandrants, (item, i) => {
-                if(item.match(new RegExp(`${value}`, 'g'))) {
-                    this.tempData.quadrant = i;
-                }
-            });
-        }
-        if(key === 'type') {
-            _.each(defaults.rings, (item, i) => {
-                if(item.match(new RegExp(`${value}`, 'ig'))) {
-                    this.tempData.ring = i;
-                }
-            });
-        }
-        return;
-    }
     updateSanitizedData() {
         this.sanitizedData = Object.assign({}, this.sanitizedData, this.tempData);
         this.tempData = {};
@@ -143,10 +123,6 @@ class RadarMarkdownParser {
         _.each(this.sanitizedData, this.levelThreeSanitizer.bind(this));
         this.updateSanitizedData();
     }
-    levelFour() {
-        _.each(this.sanitizedData, this.levelFourSanitizer.bind(this));
-        this.updateSanitizedData();
-    }
     whitelistKeys() {
         return _.pick(this.sanitizedData, defaults.whitelistedKeys);
     }
@@ -154,7 +130,6 @@ class RadarMarkdownParser {
         this.levelOne();
         this.levelTwo();
         this.levelThree();
-        this.levelFour();
         return this.whitelistKeys();
     }
 }
